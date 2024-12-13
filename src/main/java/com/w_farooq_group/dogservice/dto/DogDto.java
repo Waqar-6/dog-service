@@ -12,6 +12,8 @@ public class DogDto {
     private UUID dogId;
     @NotBlank(message = "name can not be empty")
     private String name;
+    @NotBlank(message = "registration number can not be empty")
+    private Integer registrationNumber;
     @NotBlank(message = "breed can not be empty")
     private String breed;
     @NotBlank(message = "Gender can not be empty")
@@ -20,12 +22,14 @@ public class DogDto {
     @Past(message = "date of birth can not be in the future")
     private LocalDate dateOfBirth;
 
-    public DogDto(UUID dogId, String name, String breed, Gender gender, LocalDate dateOfBirth) {
+    public DogDto(UUID dogId, String name, Integer registrationNumber, String breed, Gender gender, LocalDate dateOfBirth) {
         this.dogId = dogId;
         this.name = name;
+        this.registrationNumber= registrationNumber;
         this.breed = breed;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
+
     }
 
     public DogDto() {}
@@ -68,5 +72,13 @@ public class DogDto {
 
     public void setDateOfBirth(@NotBlank(message = "date of birth can not be empty") @Past(message = "date of birth can not be in the future") LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public @NotBlank(message = "registration number can not be empty") Integer getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public void setRegistrationNumber(@NotBlank(message = "registration number can not be empty") Integer registrationNumber) {
+        this.registrationNumber = registrationNumber;
     }
 }
